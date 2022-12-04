@@ -31,8 +31,6 @@ def get_priority(groups):
 
 
 def main():
-    # print(get_input("input.txt"))
-    # print(split_groups(get_input("input.txt")))
     return sum(get_priority(split_groups(get_input("input.txt"))))
 
 
