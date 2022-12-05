@@ -13,18 +13,14 @@ def find_overlaps(input_file):
     sections = parse_input(input_file)
     overlaps = 0
     for section in sections:
-        # Checks if the first first section overlaps with the second section
-        if (section[0] in range(section[2], section[3] + 1)) or (
-            section[1] in range(section[2], section[3] + 1)
-        ):
+        if section[1] >= section[2] and section[1] <= section[3]:
             overlaps += 1
-
-        # Checks if the first second section overlaps with the first section
-        elif (section[2] in range(section[0], section[1] + 1)) or (
-            section[3] in range(section[0], section[1] + 1)
-        ):
+        elif section[3] >= section[0] and section[3] <= section[1]:
             overlaps += 1
-
+        elif section[0] >= section[2] and section[0] <= section[3]:
+            overlaps += 1
+        elif section[2] >= section[0] and section[2] <= section[1]:
+            overlaps += 1
     return overlaps
 
 
