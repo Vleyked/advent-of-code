@@ -23,33 +23,6 @@ def _get_indexes(input_list):
             break
 
 
-# def get_stacks(input_list):
-#     """Return a list of stacks from the input_list
-
-#     Args:
-#         input_list (list): the list of the lines from reading the input.txt
-#     Returns:
-#         dict: The dicctionary with the stacks arranged by their index
-#     """
-#     # from queue import Queue
-#     from collections import deque
-
-#     stacks = {}
-#     # Getting the last number of the indexes
-#     last_index = int(_get_indexes(input_list)[-1]) + 1
-#     # Create the stacks and the indexes
-#     for i in range(1, last_index):
-#         stacks[i] = deque()  # []
-#     # Add the crates to the stacks
-#     for line in input_list:
-#         for i in range(len(line)):
-#             if line[i].isalpha():
-#                 print(line[i])
-#                 stacks[int(i / 4) + 1].append(line[i])
-#                 print(stacks)
-#     return stacks
-
-
 def get_stacks(input_list):
     """Return a list of stacks from the input_list
 
@@ -125,8 +98,6 @@ def get_moves(input_list):
 
 
 def main():
-    from collections import deque
-
     input = parse_input("input.txt")
     stacks = get_stacks(input)
     indexes = _get_indexes(input)
