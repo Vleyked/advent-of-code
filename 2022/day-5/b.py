@@ -34,33 +34,6 @@ def get_stacks(input_list):
     from collections import deque
 
     stacks = {}
-    for line in input_list:
-        try:
-            if line[1].isdigit():
-                continue
-            else:
-                for i, letter in enumerate(line):
-                    if letter.isalpha():
-                        if i not in stacks:
-                            stacks[i] = deque([letter])
-                        else:
-                            stacks[i].append(letter)
-        except IndexError:
-            break
-    return stacks
-
-
-def get_stacks(input_list):
-    """Return a list of stacks from the input_list
-
-    Args:
-        input_list (list): the list of the lines from reading the input.txt
-    Returns:
-        dict: The dicctionary with the stacks arranged by their index
-    """
-    from collections import deque
-
-    stacks = {}
     for i in range(1, 10):
         stacks[i] = deque()
 
