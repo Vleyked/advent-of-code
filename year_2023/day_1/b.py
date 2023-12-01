@@ -1,6 +1,6 @@
 import re
 
-from .a import get_input
+from a import get_input
 
 # Define the number words mapping
 number_words = {
