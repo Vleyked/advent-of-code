@@ -1,8 +1,8 @@
 import re
 
-from .a import get_input, extract_first_last_digits
+from .a import get_input
 
-
+# Define the number words mapping
 number_words = {
     "one": "1",
     "two": "2",
@@ -12,30 +12,36 @@ number_words = {
     "six": "6",
     "seven": "7",
     "eight": "8",
-    "nine": "9"
+    "nine": "9",
 }
 
-def preprocess_text(text: str) -> str:
-    """Preprocess the text to make it easier to extract the digits"""
-    
-    # Replace the number words with their digit counterparts
-    for word, digit in number_words.items():
-        text = text = re.sub(r"\b{}\b".format(word),
-                             digit,
-                             text,
-                             flags=re.IGNORECASE)
-    
-    return text
+# Regular expression pattern to match digits or spelled-out digits with lookahead
+digit_pattern = re.compile(r"(?=(one|two|three|four|five|six|seven|eight|nine|\d))")
 
-# def main() -> None:
-#     text = get_input("input.txt")
-#     text = preprocess_text(text)
-#     result = extract_first_last_digits(text)
-#     print(sum(result))
+
+def extract_first_last_digit(line: str) -> int:
+    matches = digit_pattern.findall(line)
+    if not matches:
+        return 0
+
+    # Convert spelled-out digits to numeric digits
+    first_digit = number_words.get(matches[0], matches[0])
+    last_digit = number_words.get(matches[-1], matches[-1])
+
+    return int(first_digit + last_digit)
+
+
+def sum_calibration_values(text: str) -> int:
+    lines = text.strip().split("\n")
+    results = [extract_first_last_digit(line) for line in lines]
+    return sum(results)
+
+
+def main():
+    # Assuming `get_input` function is defined elsewhere and reads input correctly.
+    text = get_input("input.txt")
+    print(sum_calibration_values(text))
+
 
 if __name__ == "__main__":
-    # main()
-    text = get_input("input.txt")
-    text2 = preprocess_text(text)
-
-    print(text == text2)
+    main()

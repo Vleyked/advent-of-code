@@ -3,6 +3,7 @@ def get_input(file_name: str):
     with open(f"year_2023/day_1/{file_name}") as f:
         return f.read()
 
+
 def extract_first_last_digits(text: str) -> list:
     result = []
 
@@ -29,10 +30,12 @@ def extract_first_last_digits(text: str) -> list:
 
     return result
 
+
 def main() -> None:
     text = get_input("input.txt")
     result = extract_first_last_digits(text)
     print(sum(result))
+
 
 if __name__ == "__main__":
     main()
