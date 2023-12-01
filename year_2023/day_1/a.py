@@ -1,5 +1,5 @@
 from .utils import sum_calibration_values, get_input
-from .patterns import digit_patterns, number_words
+from .patterns import digit_patterns
 
 
 def solve_a() -> None:
